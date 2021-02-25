@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- -->
+<!-- 使用thymeleaf需引入 -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div  id="tableP">
+    <table>
+        <caption>人员信息</caption>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+        </tr>
+        <!-- 通过th命令使用一些操作 -->
+        <!-- 通过${} 使用变量 -->
+
+        <tr  th:each="item: ${list}">
+            <td th:text="${{item.id}}">还没有任何人员信息哦</td>
+            <td th:text="${{item.name}}">你是不是想独吞奖品</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

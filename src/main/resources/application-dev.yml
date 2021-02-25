@@ -1,0 +1,15 @@
+
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: sa
+    password: huike
+    #url中database为对应的数据库名称
+    url: jdbc:sqlserver://localhost:1433;DataBaseName=mydb
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.gaintry.entity

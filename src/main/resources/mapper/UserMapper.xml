@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.gaintry.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.gaintry.entity.User">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="Name" jdbcType="VARCHAR" property="Name" />
+    </resultMap>
+
+    <!-- 填写数据库里实例Person对应的表的表名 -->
+    <!-- 这里是作为一个变量使用 -->
+    <sql id="table">Auser</sql>
+    <!--查询用户信息-->
+    <select id="getUser" resultType="com.example.gaintry.entity.User" parameterType="java.lang.Integer">
+        select
+        *
+        from
+        <include refid="table" />
+         where id = #{id}
+    </select>
+
+    <select id="getAll" resultType="com.example.gaintry.entity.User">
+    SELECT
+    *
+    FROM
+    <include refid="table" />
+</select>
+
+    <insert id="insertUser" parameterType="com.example.gaintry.entity.User" keyProperty="id" useGeneratedKeys="true">
+        insert into <include refid="table"/>
+         (id,name) values (#{id},#{name,jdbcType=VARCHAR})
+    </insert>
+
+
+</mapper>
